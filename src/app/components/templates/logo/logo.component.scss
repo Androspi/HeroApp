@@ -1,0 +1,6 @@
+@use "src/assets/styles/components/typography";
+
+.logo {
+    height: typography.vs(1) !important;
+    min-height: 16px;
+}

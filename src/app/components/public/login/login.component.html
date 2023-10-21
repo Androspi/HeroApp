@@ -1,0 +1,90 @@
+<main>
+    <header>
+        <app-logo />
+    </header>
+
+    <article id="component-info">
+        <img id="component-background" ngSrc="assets/images/home-background.png" fill
+            style="height: 100%; width: 100%;" />
+
+        <section id="login-card">
+            <mat-card class="custom-card scrollbar">
+                <mat-card-header>
+                    <mat-card-title>Continúe Con</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-actions id="social-network-section" class="mt-3">
+                    <button mat-flat-button>
+                        <mat-icon class="m-0" svgIcon="ct-google"></mat-icon>
+                    </button>
+                    <button mat-flat-button>
+                        <mat-icon class="m-0" svgIcon="ct-facebook"></mat-icon>
+                    </button>
+                    <button mat-flat-button>
+                        <mat-icon class="m-0" svgIcon="ct-linkedin"></mat-icon>
+                    </button>
+                </mat-card-actions>
+
+                <hr class="separator">
+
+                <mat-card-header class="mt-4 mb-2">
+                    <mat-card-title>O Ingrese Con Correo</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="mt-4">
+
+                    <form class="example-form" [formGroup]="form" (submit)="logIn()">
+
+                        <mat-form-field class="w-100 d-flex">
+                            <mat-label class="text-uppercase">correo electrónico</mat-label>
+                            <input autocomplete="email" matInput type="email" formControlName="email"
+                                placeholder="mail@example.com">
+                            <span matTextPrefix>
+                                <mat-icon class="ms-2 me-4 mt-0 mb-0 lh-1"
+                                    [svgIcon]="isMobile ? 'ct-mail' : 'ct-user'" />
+                            </span>
+                            <span matTextSuffix [style.visibility]="!form.controls.email.touched ? 'hidden': 'visible'">
+                                <mat-icon class="mt-0 mb-0 lh-1"
+                                    [svgIcon]="form.controls.email.valid ? 'ct-check': 'ct-close'" />
+                            </span>
+                            <mat-error *ngIf="form.controls.email.invalid && !form.controls.email.hasError('required')">
+                                Por favor ingrese un correo electrónico válido
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.email.hasError('required')">
+                                El correo electrónico es requerido
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="w-100 d-flex mt-2">
+                            <mat-label class="text-uppercase">contraseña</mat-label>
+                            <input autocomplete="current-password" matInput type="password" formControlName="password"
+                                placeholder="********">
+                            <span matTextPrefix>
+                                <mat-icon class="ms-2 me-4 mt-0 mb-0 lh-1" svgIcon="ct-padlock" />
+                            </span>
+                            <span matTextSuffix
+                                [style.visibility]="!form.controls.password.touched ? 'hidden': 'visible'">
+                                <mat-icon class="mt-0 mb-0 lh-1"
+                                    [svgIcon]="form.controls.password.valid ? 'ct-check': 'ct-close'" />
+                            </span>
+                            <mat-error
+                                *ngIf="form.controls.password.invalid && !form.controls.password.hasError('required')">
+                                La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número
+                                y su longitud debe sobrepasar los 8 caracteres
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.password.hasError('required')">
+                                La contraseña es requerida
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button [disabled]="form.invalid" type="submit" class="signin-btn text-uppercase"
+                            mat-flat-button color="primary">
+                            Ingresar
+                        </button>
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </section>
+    </article>
+</main>

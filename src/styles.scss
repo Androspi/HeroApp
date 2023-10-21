@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@use "src/assets/styles/utils";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+main {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
+.scrollbar {
+    &::-webkit-scrollbar {
+        background-color: #ffffff;
+        height: 1vmax;
+        cursor: grab;
+        width: 1vmin;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: 0.4rem solid #cfcfcf;
+        background-color: #cfcfcf;
+        background-clip: content-box;
+        border-radius: 1.33rem;
+
+        &:hover {
+            background-color: #ffffff;
+        }
+    }
+
+    &::-webkit-scrollbar-track {
+        --webkit-box-shadow: inset 0 0 1vmin #ffffff;
+    }
+}

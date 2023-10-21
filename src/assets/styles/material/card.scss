@@ -1,0 +1,13 @@
+.mat-mdc-card.custom-card {
+    --mdc-elevated-card-container-shape: 10px;
+    --mdc-elevated-card-container-elevation: 0px 10px 30px #393b442c;
+
+    .mat-mdc-card-header-text {
+        flex-grow: 1;
+    }
+
+    .mat-mdc-card-title {
+        text-align: center;
+        color: #393b44;
+    }
+}

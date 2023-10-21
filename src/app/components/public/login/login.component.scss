@@ -1,0 +1,137 @@
+@use "src/assets/styles/components/layout";
+
+main {
+    background: var(--tertiary-bg);
+    flex-direction: column;
+    display: flex;
+}
+
+header {
+    background: transparent;
+    padding: 3vh 8vw;
+    width: 100vw;
+}
+
+#component-info {
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 7.5vw;
+    display: flex;
+    flex-grow: 1;
+}
+
+#component-background {
+    height: 100% !important;
+    pointer-events: none;
+    position: relative;
+    object-fit: fill;
+}
+
+.custom-card {
+    padding: 4vw 5vw 3vw 5vw;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+#social-network-section {
+    justify-content: center;
+    gap: 0.5rem;
+
+    button {
+        box-shadow: 0px 3px 20px #81818129;
+        padding-right: 3rem;
+        padding-left: 3rem;
+        height: 3rem;
+
+        mat-icon {
+            width: 1.7rem;
+            height: 1.7rem;
+        }
+    }
+}
+
+mat-form-field {
+    mat-icon {
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+}
+
+.separator {
+    border-color: #e9eaec;
+    border-style: solid;
+    margin-top: 3rem;
+    margin-bottom: 0;
+    width: 90%;
+}
+
+.signin-btn {
+    --mdc-filled-button-container-shape: 1.5rem;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 6rem;
+    height: 3rem;
+    width: 80%;
+}
+
+@include layout.use-viewport(small, null) {
+    .custom-card {
+        transform: translateY(-4vh);
+    }
+}
+
+@include layout.use-viewport(xsmall) {
+    header {
+        padding: 1vmin 2vmax;
+    }
+
+    #component-background {
+        display: none;
+    }
+
+    #component-info {
+        justify-content: center;
+        padding: 0 5vw;
+    }
+
+    #login-card {
+        max-width: 100%;
+        float: none;
+    }
+
+    #social-network-section {
+        justify-content: space-between;
+        gap: 0;
+
+        button {
+            padding-right: 2rem;
+            padding-left: 2rem;
+
+            mat-icon {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+
+    .mat-mdc-card.custom-card .mat-mdc-card-title {
+        --mat-card-title-text-size: 1.25rem;
+        text-transform: uppercase;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .separator {
+        margin-top: 1rem;
+        margin-bottom: 0;
+        margin-left: -5vw;
+        width: calc(100% + 10vw);
+    }
+
+    .signin-btn {
+        margin-top: 3rem;
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+}

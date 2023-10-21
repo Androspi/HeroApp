@@ -1,0 +1,4 @@
+// Crea una nueva medida basada en la suma de los lados de la pantalla
+@function vs($n) {
+    @return calc(#{$n}vw + #{$n}vh);
+}
