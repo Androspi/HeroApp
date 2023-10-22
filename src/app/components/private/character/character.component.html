@@ -1,1 +1,57 @@
-<p>character works!</p>
+<app-header class="hide-on-mobile" />
+<app-searcher class="hide-on-mobile" />
+<article id="character-content" *ngIf="character">
+    <section id="character-card">
+        <div id="character-image" class="aspect-ratio-element">
+            <img class="background-image" ngSrc="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" fill />
+        </div>
+
+        <mat-card id="character-info">
+            <mat-card-actions>
+                <button mat-button class="me-2">
+                    <mat-icon
+                        style="transform: rotate(270deg); --mdc-text-button-label-text-color: var(--app-cl2);">logout</mat-icon>
+                </button>
+
+                <button mat-button>
+                    <mat-icon svgIcon="ct-favorite"></mat-icon>
+                </button>
+            </mat-card-actions>
+
+            <mat-card-header class="mt-0">
+                <mat-card-title>{{character.name}}</mat-card-title>
+
+                <mat-card-subtitle class="text-capitalize">
+                    Actualizado en {{character.modified | date:"MMMM 'de' y"}}
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>{{character.description || 'Próximamente tendremos una descipción detallada de este personaje'}}</p>
+            </mat-card-content>
+        </mat-card>
+    </section>
+
+    <section id="comics-section" *ngIf="comics">
+        <h1>COMICS</h1>
+
+        <ng-container *ngIf="!comics.length">
+            <p>No hay comics disponibles</p>
+        </ng-container>
+
+        <drag-scroll [scrollbar-hidden]="true">
+            <div drag-scroll-item *ngFor="let comic of comics" class="drag-scroll-image" style="--aspect-ratio: 3/4;"
+                [matTooltip]="comic.title" (click)="openDialog(comic)">
+                <img ngSrc="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" fill />
+                <div class="content">
+                    <h3>
+                        {{comic.title}}
+                    </h3>
+                </div>
+            </div>
+        </drag-scroll>
+
+        <mat-divider></mat-divider>
+    </section>
+</article>
+<app-navbar />

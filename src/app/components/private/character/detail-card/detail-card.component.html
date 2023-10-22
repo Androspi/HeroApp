@@ -1,0 +1,29 @@
+<div class="detail-card" mat-dialog-content>
+
+    <div mat-dialog-actions class="floating-element" style="top: .5%; right: .5%;">
+        <button mat-icon-button mat-dialog-close aria-label="Modal close">
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </div>
+
+    <div class="comic-image p-relative">
+        <img style="border-radius: 10px;" class="background-image"
+            ngSrc="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" fill />
+    </div>
+
+    <section class="scrollbar comic-info">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{comic.title}}</mat-card-title>
+                <mat-card-subtitle class="issue-text">Número de emisión: {{comic.issueNumber}}</mat-card-subtitle>
+                <mat-card-subtitle class="publish-text text-capitalize" *ngIf="publishDate">
+                    Publicado en {{publishDate | date:"MMMM 'de' y"}}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{comic.description || 'Próximamente tendremos una descipción detallada de este comic'}}</p>
+            </mat-card-content>
+        </mat-card>
+    </section>
+</div>

@@ -10,8 +10,8 @@ const routes: Routes = [{
   canActivate: [() => inject(AuthGuard).canActivate()],
   path: '',
   children: [
-    { path: 'home', loadComponent: () => import('./home/home.component').then(c => c.HomeComponent), },
     { path: 'character/:id', loadComponent: () => import('./character/character.component').then(c => c.CharacterComponent), },
+    { path: 'home', loadComponent: () => import('./home/home.component').then(c => c.HomeComponent), },
     { path: '**', pathMatch: 'full', redirectTo: '/public/login' }
   ],
 }, { path: '**', pathMatch: 'full', redirectTo: '/public/login' }];

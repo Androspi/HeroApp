@@ -1,0 +1,9 @@
+mat-dialog-container.mat-mdc-dialog-container {
+    --mdc-dialog-container-elevation-shadow: 0px 10px 30px var(--app-sw2);
+    --mdc-dialog-container-shadow-color: var(--app-cl3);
+    --mdc-dialog-container-shape: 10px;
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgba(255, 255, 255, 0.9) !important;
+}

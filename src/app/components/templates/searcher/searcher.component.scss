@@ -62,3 +62,45 @@ mat-form-field {
         width: 90%;
     }
 }
+
+@include layout.use-viewport(xsmall, layout.get-viewport-value("large", "max-width")) {
+    mat-form-field {
+        mat-icon {
+            font-size: 1.2rem;
+            height: 1.2rem;
+            width: 1.2rem;
+            padding: 4px;
+        }
+    }
+
+    :host ::ng-deep {
+
+        .mat-mdc-form-field-subscript-wrapper,
+        .mat-mdc-form-field-bottom-align::before {
+            --mat-form-field-subscript-text-line-height: 10px;
+            --mat-form-field-subscript-text-size: 7px;
+        }
+
+        .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+            padding-top: 10px;
+        }
+
+        .mat-mdc-form-field-infix {
+            min-height: 32px;
+        }
+
+        .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+            top: 18px;
+        }
+
+        .mat-mdc-form-field-icon-prefix {
+            margin-left: 20px;
+        }
+    }
+
+    .mat-mdc-form-field {
+        --mat-form-field-container-text-line-height: 18px;
+        --mdc-filled-text-field-label-text-size: 12px;
+        --mat-form-field-container-text-size: 10px;
+    }
+}

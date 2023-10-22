@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { DragScrollModule } from 'ngx-drag-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { DirectivesModule } from '../directives/directives.module';
@@ -20,6 +21,7 @@ const modules = [
   ReactiveFormsModule,
   NgxSpinnerModule,
   HttpClientModule,
+  DragScrollModule,
   MaterialModule,
   RouterModule,
   CommonModule,

@@ -23,6 +23,7 @@ export class HomeComponent {
   paginator = { limit: 18, page: 1, total: 0, orderType: ASC };
 
   characterSubscription$: undefined | Subscription;
+  queryParamSubscription$: undefined | Subscription;
   listeners: { parent: HTMLElement | Window, id: string, callback: () => any }[] = [];
 
   loadingCharacters = false;
@@ -41,36 +42,38 @@ export class HomeComponent {
   ) { }
 
   ngAfterViewInit(): void {
-    this.route.queryParams.subscribe(({ find = '' }) => {
-      if (find != undefined) {
-        this.findingCharacters = true;
+    setTimeout(() => {
+      this.queryParamSubscription$ = this.route.queryParams.subscribe(({ find = '' }) => {
+        if (find != undefined) {
+          this.findingCharacters = true;
 
+          const { limit, total } = this.paginator;
+
+          this.Characters.replace({ limit: total < limit ? limit : total, find });
+
+          const searcher = document.querySelector<HTMLInputElement>('#input-searcher');
+          if (searcher) searcher.value = find;
+        }
+      });
+
+      this.characterSubscription$ = this.Characters.characters.subscribe(list => {
         const { limit, total } = this.paginator;
 
-        this.Characters.replace({ limit: total < limit ? limit : total, find });
+        this.loadedCharacters = list.slice(0, total + limit);
+        this.paginator.total = this.loadedCharacters.length;
 
-        const searcher = document.querySelector<HTMLInputElement>('#input-searcher');
-        if (searcher) searcher.value = find;
-      }
-    });
+        if (this.loadingCharacters) this.loadingCharacters = false;
+        if (this.sortingCharacters) this.sortingCharacters = false;
+        if (this.findingCharacters) this.findingCharacters = false;
+      });
 
-    this.characterSubscription$ = this.Characters.characters.subscribe(list => {
-      const { limit, total } = this.paginator;
+      const appHeight = () => this.isMobile = window.innerWidth < 600;
 
-      this.loadedCharacters = list.slice(0, total + limit);
-      this.paginator.total = this.loadedCharacters.length;
+      appHeight();
+      window.addEventListener('resize', appHeight);
 
-      if (this.loadingCharacters) this.loadingCharacters = false;
-      if (this.sortingCharacters) this.sortingCharacters = false;
-      if (this.findingCharacters) this.findingCharacters = false;
-    });
-
-    const appHeight = () => this.isMobile = window.innerWidth < 600;
-
-    appHeight();
-    window.addEventListener('resize', appHeight);
-
-    this.listeners.push({ parent: window, id: 'resize', callback: appHeight });
+      this.listeners.push({ parent: window, id: 'resize', callback: appHeight });
+    }, 0);
   }
 
   /**
@@ -100,7 +103,7 @@ export class HomeComponent {
     this.Characters.load({ limit, offset: total, orderType, find: this.findText });
   }
 
-  /** Consulta los heroes de acuerdo al filtro */
+  /** Consulta los personajes de acuerdo al filtro */
   changeSort() {
     this.sortingCharacters = true;
     this.paginator.orderType = this.paginator.orderType === ASC ? DESC : ASC;
@@ -109,6 +112,7 @@ export class HomeComponent {
 
   ngOnDestroy(): void {
     this.characterSubscription$?.unsubscribe();
+    this.queryParamSubscription$?.unsubscribe();
     this.listeners.forEach(({ callback, id, parent }) => parent.removeEventListener(id, callback));
   }
 

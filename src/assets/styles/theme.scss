@@ -1,6 +1,7 @@
 @use "@angular/material" as mat;
 @use "src/assets/styles/material/theme";
 @use "src/assets/styles/material/typography";
+@use "src/assets/styles/material/dialog";
 @use "src/assets/styles/material/toolbar";
 @use "src/assets/styles/material/dropdown";
 @use "src/assets/styles/material/card";
@@ -24,3 +25,4 @@ $my-theme: mat.define-light-theme(
 );
 
 @include mat.all-component-themes($my-theme);
+@include mat.typography-hierarchy(typography.$my-custom-typography-config);

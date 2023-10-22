@@ -28,3 +28,26 @@
         display: none !important;
     }
 }
+
+[style*="--aspect-ratio"],
+.aspect-ratio-element {
+    position: relative;
+
+    > :first-child {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    > img {
+        height: auto;
+    }
+
+    &::before {
+        padding-bottom: calc(100% / (var(--aspect-ratio)));
+        display: block;
+        content: "";
+    }
+}
