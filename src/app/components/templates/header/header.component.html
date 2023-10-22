@@ -1,0 +1,25 @@
+<header>
+    <mat-toolbar id="header">
+        <app-logo />
+
+        <span class="spacer hide-on-mobile"></span>
+
+        <button #menuBtn mat-button [matMenuTriggerFor]="appMenu" class="menu-btn hide-on-mobile">
+            Menu
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #appMenu="matMenu" [hasBackdrop]="false" yPosition="below" xPosition="before">
+            <ng-template matMenuContent>
+                <app-navbar-menu [menuBtn]="menuBtn" itemSize="20%" />
+            </ng-template>
+        </mat-menu>
+
+        <button mat-fab extended class="user-btn hide-on-mobile">
+            <span class="fab-text">{{User.name()}}</span>
+            <button mat-mini-fab color="accent" aria-label="letter icon">
+                {{User.initial()}}
+            </button>
+        </button>
+    </mat-toolbar>
+</header>

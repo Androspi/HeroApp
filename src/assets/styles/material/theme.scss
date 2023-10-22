@@ -47,3 +47,31 @@ $accent: (
         900: #ffffff
     )
 );
+
+$primary-color: map-get($palette, 500);
+$accent-color: map-get($accent, 500);
+
+$palette-background1: #f7f7f7;
+$palette-background2: #ffffff;
+
+$palette-color1: #ff3442;
+$palette-color2: #808994;
+$palette-color3: #393b44;
+
+$palette-shadow1: #81818129;
+$palette-shadow2: #393b442c;
+
+:root {
+    --app-primary: #{$primary-color};
+    --app-accent: #{$accent-color};
+
+    --app-bg1: #{$palette-background1};
+    --app-bg2: #{$palette-background2};
+
+    --app-cl1: #{$palette-color1};
+    --app-cl2: #{$palette-color2};
+    --app-cl3: #{$palette-color3};
+
+    --app-sw1: #{$palette-shadow1};
+    --app-sw2: #{$palette-shadow2};
+}

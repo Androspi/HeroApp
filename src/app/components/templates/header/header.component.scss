@@ -1,0 +1,81 @@
+@use "src/assets/styles/utils/typography";
+@use "src/assets/styles/utils/layout";
+
+:host {
+    display: contents;
+}
+
+#header {
+    background: transparent;
+    padding: 3vh 8vw;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-mdc-button.menu-btn {
+    grid-template-columns: repeat(2, 1fr);
+    height: typography.vs(2);
+    align-items: center;
+    display: grid;
+
+    & > .mat-icon {
+        font-size: typography.vs(1.2);
+        height: typography.vs(1.2);
+        width: typography.vs(1.2);
+        margin-left: 8px;
+        margin-right: 0;
+        order: 2;
+    }
+
+    & > .mdc-button__label {
+        margin-right: 8px;
+        margin-left: 0;
+        order: 1;
+    }
+
+    &[aria-expanded="true"],
+    &:active,
+    &:hover,
+    &:focus {
+        --mdc-text-button-label-text-color: var(--app-cl1) !important;
+    }
+}
+
+.mat-mdc-fab.user-btn {
+    height: typography.vs(1.25);
+    background: var(--app-bg2);
+    align-items: center;
+    padding-right: 5px;
+    padding-left: 5px;
+    box-shadow: none;
+    color: inherit;
+
+    & .mat-mdc-mini-fab {
+        height: typography.vs(1.15);
+        width: typography.vs(1.15);
+        text-transform: uppercase;
+        margin-left: 8px;
+    }
+
+    & .fab-text {
+        margin-left: 8px;
+    }
+
+    &:active,
+    &:hover,
+    &:focus {
+        box-shadow:
+            0px 3px 5px -1px var(--app-sw1),
+            0px 6px 10px 0px var(--app-sw2),
+            0px 1px 18px 0px var(--app-sw1);
+    }
+}
+
+@include layout.use-viewport(xsmall) {
+    #header {
+        --mat-toolbar-mobile-height: 36px;
+        padding: 1vmin 2vmax;
+    }
+}

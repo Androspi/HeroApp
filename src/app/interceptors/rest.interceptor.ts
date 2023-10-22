@@ -18,12 +18,14 @@ export class RestInterceptor implements HttpInterceptor {
             map(event => {
                 if (event.type !== HttpEventType.Response) return event;
 
-                // if (event.body.status !== 'success') {
-                //     this.snackBar.open('Lo sentimos, por favor intenta más tarde', 'Ok');
-                //     return event;
-                // }
+                if (typeof event.body === 'string') return event.clone({ body: event.body });
 
-                return event.clone({ body: event.body.message });
+                if (event.body.status !== 'Ok') {
+                    this.snackBar.open('Lo sentimos, por favor intenta más tarde', 'Ok');
+                    return event;
+                }
+
+                return event.clone({ body: event.body.data });
             }),
             catchError(this.#catchErrorFn)
         );

@@ -12,12 +12,8 @@ const routes: Routes = [{
     loadComponent: () => import('./login/login.component').then(e => e.LoginComponent),
     canActivate: [() => inject(LoginGuard).canActivate()],
     path: 'login',
-  },
-  { path: '**', pathMatch: 'full', redirectTo: '/public/login' }
-  ]
-},
-{ path: '**', pathMatch: 'full', redirectTo: '/public/login' }
-];
+  }, { path: '**', pathMatch: 'full', redirectTo: '/public/login' }]
+}, { path: '**', pathMatch: 'full', redirectTo: '/public/login' }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

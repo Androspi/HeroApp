@@ -11,11 +11,10 @@ const routes: Routes = [{
   path: '',
   children: [
     { path: 'home', loadComponent: () => import('./home/home.component').then(c => c.HomeComponent), },
+    { path: 'character/:id', loadComponent: () => import('./character/character.component').then(c => c.CharacterComponent), },
     { path: '**', pathMatch: 'full', redirectTo: '/public/login' }
   ],
-},
-{ path: '**', pathMatch: 'full', redirectTo: '/public/login' }
-];
+}, { path: '**', pathMatch: 'full', redirectTo: '/public/login' }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

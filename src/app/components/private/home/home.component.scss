@@ -1,0 +1,128 @@
+@use "src/assets/styles/utils/layout";
+
+:host {
+    background: var(--tertiary-bg);
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+}
+
+#home-content {
+    padding: 0 8vw 2vh;
+    overflow: auto;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.favorite-btn {
+    --mdc-filled-button-container-color: rgba(255, 255, 255, 0.9);
+    padding: 24px 12px;
+    min-width: unset;
+}
+
+.mat-grid-tile {
+    box-shadow: 0px 6px 10px var(--app-sw1);
+    overflow: visible !important;
+}
+
+.simple-card {
+    img {
+        transition: all 0.5s ease;
+        opacity: 0.75;
+    }
+
+    &:hover {
+        img {
+            opacity: 1;
+        }
+    }
+}
+
+.sort-btn {
+    --mdc-filled-button-label-text-color: var(--app-cl2);
+    --mdc-filled-button-container-color: transparent;
+    grid-template-columns: repeat(2, auto);
+    min-width: unset;
+    display: grid;
+
+    > .mat-icon {
+        line-height: 0.8rem;
+        margin-left: 8px;
+        font-size: 0.8rem;
+        margin-right: 0;
+        height: 0.8rem;
+        width: 0.8rem;
+        order: 2;
+    }
+
+    .btn-text {
+        margin-right: 8px;
+        font-size: 0.75rem;
+        margin-left: 0;
+        order: 1;
+    }
+}
+
+#filter-section {
+    background: var(--app-bg1);
+    border-radius: 0 0 8px 8px;
+    display: inline-flex;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: -10px;
+    position: sticky;
+    z-index: 5;
+    top: 0;
+}
+
+.sort-desc {
+    transform: rotate(180deg);
+}
+
+.hot-deal {
+    background-color: var(--app-cl1);
+    color: var(--app-bg2);
+    padding: 2.5px 20px;
+    font-size: 0.75rem;
+    left: -5px;
+}
+
+@include layout.use-viewport(xsmall) {
+    app-searcher {
+        margin-top: 1.5rem;
+    }
+
+    #home-content {
+        text-align: right;
+    }
+
+    #filter-section {
+        margin-right: -10px;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+
+    #character-section {
+        text-align: left;
+    }
+
+    .simple-card {
+        .content {
+            font-size: 1rem;
+        }
+    }
+
+    .favorite-btn {
+        padding: 6px 6px;
+        height: 24px;
+
+        mat-icon {
+            font-size: 0.8rem;
+            height: 0.8rem;
+            width: 0.8rem;
+        }
+    }
+}

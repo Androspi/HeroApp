@@ -1,0 +1,16 @@
+<button mat-button #menuBtn mat-button [matMenuTriggerFor]="appMenu2" class="menu-btn">
+    <mat-icon style="color: var(--app-cl3);">menu</mat-icon>
+</button>
+
+<mat-menu #appMenu2="matMenu" [hasBackdrop]="false">
+    <ng-template matMenuContent>
+        <app-navbar-menu [menuBtn]="menuBtn" />
+    </ng-template>
+</mat-menu>
+
+<button mat-button routerLink="/home">
+    <mat-icon svgIcon="ct-search" />
+</button>
+<button mat-button>
+    <mat-icon svgIcon="ct-user" />
+</button>

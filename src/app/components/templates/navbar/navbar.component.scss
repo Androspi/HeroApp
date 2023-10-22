@@ -1,0 +1,23 @@
+@use "src/assets/styles/utils/layout";
+
+:host {
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--app-bg2);
+    display: grid;
+}
+
+.mat-mdc-button {
+    height: 48px;
+
+    > .mat-icon {
+        font-size: 1.5rem;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+
+@include layout.use-viewport(small, null) {
+    :host {
+        display: none;
+    }
+}

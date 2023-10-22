@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './components/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { RestInterceptor } from './interceptors/rest.interceptor';
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { AppComponent } from './app.component';
     SharedModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RestInterceptor, multi: true },
   ],
 })

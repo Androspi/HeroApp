@@ -21,7 +21,7 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
 
   form: FormGroup<{ email: FormControl<string>; password: FormControl<string> }>;
 
-  listeners: { parent: any, id: string, callback: () => any }[] = [];
+  listeners: { parent: HTMLElement | Window, id: string, callback: () => any }[] = [];
 
   constructor(
     private snackBar: MatSnackBar,
@@ -45,7 +45,7 @@ export class LoginComponent implements AfterViewInit, OnDestroy {
 
   logIn() {
     if (this.form.invalid) {
-      this.snackBar.open('Los datos de inicio de sesión no son correctos');
+      this.snackBar.open('Los datos de inicio de sesión no son correctos', 'Ok');
       return;
     }
 

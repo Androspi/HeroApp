@@ -1,0 +1,18 @@
+:host {
+    display: contents;
+}
+
+.logout-btn {
+    --mdc-filled-button-container-shape: 1.5rem;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 2rem;
+    height: 3rem;
+    width: 80%;
+}
+
+.close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}

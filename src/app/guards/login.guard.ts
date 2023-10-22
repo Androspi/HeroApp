@@ -21,20 +21,20 @@ export class LoginGuard {
       return false;
     }
 
-    const { date, mail } = JSON.parse(localStorage.getItem('app-user') ?? '{}');
+    const { date, mail }: { date: number; mail: string; } = JSON.parse(localStorage.getItem('app-user') ?? '{}');
     if (!date || !mail) {
       return true;
     }
 
     const diff = Math.abs(Date.now() - date);
     if (diff > 72e5) {
-      this.snackBar.open('Su tiempo en sesión ha finalizado');
+      this.snackBar.open('Su tiempo en sesión ha finalizado', 'Ok');
       localStorage.removeItem('app-user');
       return true;
     }
 
     this.User.isLoggedIn = true;
-    this.User.mail = mail;
+    this.User.mail.set(mail);
 
     this.router.navigate(['/home']);
     return false;

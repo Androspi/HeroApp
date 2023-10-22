@@ -21,7 +21,7 @@ export class AuthGuard {
       return true;
     }
 
-    const { date, mail } = JSON.parse(localStorage.getItem('app-user') ?? '{}');
+    const { date, mail }: { date: number; mail: string; } = JSON.parse(localStorage.getItem('app-user') ?? '{}');
     if (!date || !mail) {
       this.router.navigate(['/public/login']);
       return false;
@@ -29,14 +29,14 @@ export class AuthGuard {
 
     const diff = Math.abs(Date.now() - date);
     if (diff > 72e5) {
-      this.snackBar.open('Su tiempo en sesión ha finalizado');
+      this.snackBar.open('Su tiempo en sesión ha finalizado', 'Ok');
       localStorage.removeItem('app-user');
       this.router.navigate(['/public/login']);
       return false;
     }
 
     this.User.isLoggedIn = true;
-    this.User.mail = mail;
+    this.User.mail.set(mail);
 
     return true;
   }

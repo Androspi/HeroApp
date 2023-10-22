@@ -45,14 +45,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DomSanitizer } from '@angular/platform-browser';
-// import { CdkMenuModule } from '@angular/cdk/menu';
-// import { DialogModule } from '@angular/cdk/dialog';
 
 const modules = [
     A11yModule,
     CdkAccordionModule,
     ClipboardModule,
-    // CdkMenuModule,
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
@@ -95,13 +92,12 @@ const modules = [
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    // DialogModule,
 ]
 
 @NgModule({ exports: modules })
 export class MaterialModule {
 
-    #customIcons = ['check', 'close', 'facebook', 'google', 'linkedin', 'padlock', 'user', 'mail'];
+    #customIcons = ['check', 'close', 'facebook', 'google', 'linkedin', 'padlock', 'user', 'mail', 'favorite', 'sort', 'search'];
 
     constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
 

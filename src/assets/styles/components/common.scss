@@ -1,0 +1,30 @@
+@use "src/assets/styles/utils/layout";
+@use "src/assets/styles/utils/common";
+
+.floating-element {
+    position: absolute !important;
+    z-index: 1;
+
+    &[float*="bottom"] {
+        bottom: 10px;
+    }
+    &[float*="right"] {
+        right: 10px;
+    }
+    &[float*="left"] {
+        left: 10px;
+    }
+    &[float*="top"] {
+        top: 10px;
+    }
+}
+
+.scrollbar {
+    @extend %scrollbar;
+}
+
+@include layout.use-viewport(xsmall) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}

@@ -1,0 +1,25 @@
+@use "src/assets/styles/utils/common";
+@use "src/assets/styles/utils/layout";
+
+.mat-mdc-menu-panel {
+    box-shadow: 0px 10px 30px var(--app-sw2) !important;
+    --mat-menu-container-shape: 10px !important;
+    max-width: none !important;
+
+    @extend %scrollbar;
+}
+
+.mat-mdc-menu-content {
+    --mat-menu-container-shape: 10px;
+    padding: 0;
+}
+
+@include layout.use-viewport(xsmall) {
+    .cdk-overlay-pane {
+        width: 100%;
+
+        .mat-mdc-menu-panel {
+            width: 100%;
+        }
+    }
+}

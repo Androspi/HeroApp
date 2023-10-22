@@ -1,1 +1,45 @@
-<p>home works!</p>
+<app-header />
+<app-searcher />
+<article id="home-content" #section (wheel)="load(section)">
+
+    <section id="filter-section">
+        <h1 class="m-0 me-3 hide-on-mobile" style="font-weight: 500; color: var(--app-cl3); line-height: 2.2rem;">
+            {{paginator.total}}/{{Characters.totalResults}} resultados
+        </h1>
+
+        <button class="sort-btn" mat-flat-button (click)="changeSort()">
+            <span class="btn-text">{{(paginator.orderType | lowercase) === 'asc' ? 'A-Z' : 'Z-A'}}</span>
+            <mat-icon class="m-0 sort-{{paginator.orderType | lowercase}}" svgIcon="ct-sort"></mat-icon>
+        </button>
+    </section>
+
+    <section id="character-section">
+        <mat-grid-list [cols]="isMobile ? 2 : 6" rowHeight="17:20" gutterSize="17px">
+            <mat-grid-tile *ngFor="let character of loadedCharacters">
+                <a class="simple-card c-pointer" [routerLink]="['/character', character.id]">
+                    <img class="background-image" ngSrc="{{character.thumbnail.path}}.{{character.thumbnail.extension}}"
+                        fill />
+
+                    <button class="floating-element favorite-btn" float="right/top" mat-flat-button>
+                        <mat-icon class="m-0" svgIcon="ct-favorite"></mat-icon>
+                    </button>
+
+                    <div class="floating-element hot-deal" float="top" *ngIf="!(character.id | lastNumber)">
+                        HOT DEAL
+                    </div>
+
+                    <div class="content">
+                        {{character.name}}
+                    </div>
+                </a>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </section>
+
+    <div class="p-relative mt-3" style="height: 30px;">
+        <ngx-spinner bdColor="rgba(255, 255, 255, 0.6)" color="var(--app-cl3)" Color="rgba(0, 0, 0, 0.8)" size="medium"
+            type="ball-pulse" [fullScreen]="sortingCharacters || findingCharacters">
+        </ngx-spinner>
+    </div>
+</article>
+<app-navbar />
