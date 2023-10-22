@@ -1,0 +1,6 @@
+@use "src/assets/styles/utils/typography";
+
+.mat-toolbar {
+    --mat-toolbar-container-text-color: var(--app-cl2);
+    --mat-toolbar-standard-height: #{typography.vs(3)};
+}

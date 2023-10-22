@@ -1,0 +1,44 @@
+.simple-card {
+    box-shadow: 0px 6px 10px var(--app-sw1);
+    flex-direction: column;
+    border-radius: 8px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    img {
+        border-radius: 8px;
+    }
+
+    .content {
+        background: transparent linear-gradient(180deg, #ffffff00 0%, #ffffffba 51%, #ffffffc1 100%) 0% 0% no-repeat
+            padding-box;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding: 3vw 1vw 1vw;
+        color: var(--app-cl3);
+        position: relative;
+        font-weight: 700;
+        margin-top: auto;
+        font-size: 2rem;
+        z-index: 1;
+    }
+}
+
+// .horizontal-card {
+//     .content-container {
+//         padding-top: calc(100% / var(--aspect-ratio));
+//         background: blue;
+//         position: relative;
+//         overflow: hidden;
+//         height: 0;
+
+//         .content {
+//             position: absolute;
+//             height: 100%;
+//             width: 100%;
+//             left: 0;
+//             top: 0;
+//         }
+//     }
+// }
