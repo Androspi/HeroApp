@@ -28,6 +28,10 @@ export class CharacterComponent implements AfterViewInit, OnDestroy {
   #comicsSubscription$: undefined | Subscription;
   #routeSubscription$: undefined | Subscription;
 
+  listeners: { parent: HTMLElement | Window, id: string, callback: () => any }[] = [];
+
+  isMobile = false;
+
   constructor(
     private charactersService: CharactersService,
     private route: ActivatedRoute,
@@ -41,6 +45,13 @@ export class CharacterComponent implements AfterViewInit, OnDestroy {
       const id = data.get('id');
       if (id) this.update(+id);
     });
+
+    const appHeight = () => this.isMobile = window.innerWidth < 600;
+
+    appHeight();
+    window.addEventListener('resize', appHeight);
+
+    this.listeners.push({ parent: window, id: 'resize', callback: appHeight });
   }
 
   update(characterId: number) {
@@ -62,12 +73,11 @@ export class CharacterComponent implements AfterViewInit, OnDestroy {
   }
 
   openDialog(comic: ComicInfo) {
-    const isMobile = window.innerWidth < 600;
-
-    this.dialog.open(DetailCardComponent, { data: comic, height: isMobile ? '95vh' : '70vh', width: isMobile ? '95vw' : '60vw', maxWidth: isMobile ? '95vw' : '60vw' });
+    this.dialog.open(DetailCardComponent, { data: comic, height: this.isMobile ? '95vh' : '70vh', width: this.isMobile ? '95vw' : '60vw', maxWidth: this.isMobile ? '95vw' : '60vw' });
   }
 
   ngOnDestroy(): void {
+    this.listeners.forEach(({ callback, id, parent }) => parent.removeEventListener(id, callback));
     this.#characterSubscription$?.unsubscribe();
     this.#comicsSubscription$?.unsubscribe();
     this.#routeSubscription$?.unsubscribe();

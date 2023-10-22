@@ -8,6 +8,7 @@
 }
 
 #home-content {
+    // -webkit-overflow-scrolling: touch;
     padding: 0 8vw 2vh;
     overflow: auto;
     flex-grow: 1;
@@ -119,6 +120,7 @@
     }
 
     #home-content {
+        margin-bottom: 50px;
         text-align: right;
     }
 

@@ -76,19 +76,13 @@ export class HomeComponent {
     }, 0);
   }
 
-  /**
-   * Implementación básica infinite scroll
-   * @param target 
-   */
-  load(target: HTMLElement) {
+  /** Implementación ngx infinite scroll */
+  load() {
     if (this.loadingCharacters) return;
 
     const { limit, total, orderType } = this.paginator;
 
     if (total >= this.Characters.totalResults) return;
-
-    const { clientHeight, scrollTop, scrollHeight } = target;
-    if (Math.abs((clientHeight + scrollTop) - scrollHeight) > 1) return;
 
     this.loadingCharacters = true;
     this.paginator.page++;

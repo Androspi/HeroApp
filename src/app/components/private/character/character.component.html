@@ -39,7 +39,7 @@
             <p>No hay comics disponibles</p>
         </ng-container>
 
-        <drag-scroll [scrollbar-hidden]="true">
+        <drag-scroll [scrollbar-hidden]="!isMobile" [scroll-x-wheel-enabled]="true">
             <div drag-scroll-item *ngFor="let comic of comics" class="drag-scroll-image" style="--aspect-ratio: 3/4;"
                 [matTooltip]="comic.title" (click)="openDialog(comic)">
                 <img ngSrc="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" fill />

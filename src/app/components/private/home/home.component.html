@@ -1,6 +1,7 @@
 <app-header />
 <app-searcher />
-<article id="home-content" #section (wheel)="load(section)">
+<article id="home-content" #section infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="50"
+    [scrollWindow]="false" (scrolled)="load()">
 
     <section id="filter-section">
         <h3 class="m-0 me-3 hide-on-mobile" style="font-weight: 500; color: var(--app-cl3); line-height: 2.2rem;">
@@ -41,8 +42,8 @@
     </section>
 
     <div class="p-relative mt-3" style="height: 30px;">
-        <ngx-spinner bdColor="rgba(255, 255, 255, 0.6)" color="var(--app-cl3)" Color="rgba(0, 0, 0, 0.8)" size="medium"
-            type="ball-pulse" [fullScreen]="sortingCharacters || findingCharacters">
+        <ngx-spinner bdColor="var(--app-bg1)" color="var(--app-cl3)" size="medium" type="ball-pulse"
+            [fullScreen]="sortingCharacters || findingCharacters">
         </ngx-spinner>
     </div>
 </article>
